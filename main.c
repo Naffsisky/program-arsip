@@ -129,6 +129,7 @@ void login(){
     printf("Masukan password : ");
     fflush(stdin);
     gets(pass);
+    back:
     for (int i = 0; i < records; i++){
         if (strcmp(uname, akun[i].akun.username) == 0 && strcmp(pass, akun[i].akun.password) == 0){
             system("clear");
@@ -137,6 +138,7 @@ void login(){
             menu();
         }
     }
+    goto back;
     system("clear");
     printf("\n\nUsername atau Password Salah!\n\n");
     main(x);
@@ -241,6 +243,7 @@ void daftar_surat(){
     if (records == 0){
         printf("Tidak ada surat yang dikirim\n");
     }
+    menu();
 }
 
 void profile(){
@@ -269,6 +272,7 @@ void profile(){
         }
     } while (!feof(file));
     fclose(file);
+    printf("--- DATA DIRI ---\n");
     for (int i = 0; i < records; i++){
         printf("Nama : %s\n", akun[i].nama);
     }
@@ -287,4 +291,5 @@ void profile(){
     for (int i = 0; i < records; i++){
         printf("Password : %s\n", akun[i].akun.password);
     }
+    menu();
 }
